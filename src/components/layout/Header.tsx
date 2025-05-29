@@ -18,9 +18,18 @@ import { Menu } from "lucide-react"
 export const Header = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   const handleMenuToggle = (menuName: string) => {
     setActiveMenu(activeMenu === menuName ? null : menuName)
+  }
+
+  const handleMenuEnter = (menuName: string) => {
+    setActiveMenu(menuName)
+  }
+
+  const handleMenuLeave = () => {
+    setActiveMenu(null)
   }
 
   useEffect(() => {
@@ -31,26 +40,353 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Conference announcements
+  const announcements = [
+    {
+      title: "1st International Conference on Building Urban Infrastructure with Leading Design Innovations (BUILD- 2025)",
+      date: "March 15-17, 2025",
+      venue: "SPEC Campus",
+      action: "Register Now",
+      link: "/build-2025"
+    },
+    {
+      title: "Advanced Credit Program - Special Registration Open",
+      date: "Deadline: January 31, 2025",
+      venue: "All Institutes",
+      action: "Apply Today",
+      link: "/credit-program"
+    },
+    {
+      title: "Tech Fest 2025 - Innovation Showcase",
+      date: "February 20-22, 2025",
+      venue: "SPEC Campus",
+      action: "Participate",
+      link: "/tech-fest-2025"
+    }
+  ]
+
+  // Auto-rotate announcements
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % announcements.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [announcements.length])
+
+  // Menu Data Structure with proper typing
+  type MenuLink = {
+    name: string
+    href: string
+  }
+
+  type MenuSection = {
+    title: string
+    links?: MenuLink[]
+    companies?: string[]
+    description?: string
+    stats?: Array<{ number: string; label: string }>
+  }
+
+  type MegaMenu = {
+    sections: MenuSection[]
+    image?: {
+      type: string
+      title: string
+      subtitle?: string
+      features?: Array<{ icon: string; title: string }>
+      cta?: string
+      buttonText?: string
+      stats?: Array<{ number: string; label: string; subtext?: string; unit?: string }>
+      destinations?: string[]
+    }
+  }
+
+  type MegaMenus = {
+    [key: string]: MegaMenu
+  }
+
+  const megaMenus: MegaMenus = {
+    "About": {
+      sections: [
+        {
+          title: "WHO WE ARE",
+          links: [
+            { name: "Overview", href: "/about/overview" },
+            { name: "Vision & Mission", href: "/about/vision-mission" },
+            { name: "Leadership", href: "/about/leadership" },
+            { name: "Core Values", href: "/about/values" },
+            { name: "Recognition & Approvals", href: "/about/recognition" },
+            { name: "Awards & Rankings", href: "/about/awards" },
+            { name: "Institutional Social Responsibility", href: "/about/social-responsibility" },
+            { name: "SPEC Dynamics", href: "/about/spec-dynamics" }
+          ]
+        },
+        {
+          title: "RELATED LINKS",
+          links: [
+            { name: "Institutes & Departments", href: "/institutes" },
+            { name: "Admissions", href: "/admissions" },
+            { name: "Scholarships", href: "/scholarships" },
+            { name: "Governance", href: "/governance" },
+            { name: "Hostel Facility", href: "/hostel" },
+            { name: "Student Services", href: "/student-services" },
+            { name: "How to Reach Us?", href: "/contact" }
+          ]
+        }
+      ],
+      image: {
+        type: "university-promotion",
+        title: "Chandigarh University",
+        subtitle: "Best Educational Institution",
+        features: [
+          { icon: "🤝", title: "Human Dignity" },
+          { icon: "❤️", title: "Empathy" },
+          { icon: "🙏", title: "Humility" },
+          { icon: "🎁", title: "Giving" }
+        ]
+      }
+    },
+    "Programs": {
+      sections: [
+        {
+          title: "REGULAR PROGRAMS",
+          links: [
+            { name: "Engineering", href: "/programs/engineering" },
+            { name: "Management (BBA/MBA)", href: "/programs/management" },
+            { name: "Industry Collaborated (BBA/MBA)", href: "/programs/industry-collaborated" },
+            { name: "Computing (BCA/ MCA)", href: "/programs/computing" },
+            { name: "Airlines & Airport Management", href: "/programs/airlines" },
+            { name: "Allied Health Sciences", href: "/programs/health-sciences" },
+            { name: "Animation & Multimedia", href: "/programs/animation" },
+            { name: "Architecture", href: "/programs/architecture" },
+            { name: "Arts & Humanities", href: "/programs/arts" },
+            { name: "Basic Sciences", href: "/programs/basic-sciences" },
+            { name: "Biotechnology & Biosciences", href: "/programs/biotechnology" },
+            { name: "B.Sc. Medical", href: "/programs/medical" },
+            { name: "Commerce", href: "/programs/commerce" },
+            { name: "Travel and Tourism", href: "/programs/tourism" }
+          ]
+        },
+        {
+          title: "SPECIALIZED PROGRAMS",
+          links: [
+            { name: "Culinary Sciences", href: "/programs/culinary" },
+            { name: "Data Science", href: "/programs/data-science" },
+            { name: "Economics", href: "/programs/economics" },
+            { name: "Education", href: "/programs/education" },
+            { name: "Fashion & Design", href: "/programs/fashion" },
+            { name: "Finance & Accounting", href: "/programs/finance" },
+            { name: "Fine Arts", href: "/programs/fine-arts" },
+            { name: "Forensic Sciences", href: "/programs/forensic" },
+            { name: "Hotel & Hospitality Management", href: "/programs/hospitality" },
+            { name: "Interior Design", href: "/programs/interior" },
+            { name: "Legal Studies", href: "/programs/legal" },
+            { name: "M.A. English", href: "/programs/english" },
+            { name: "M.Sc. Zoology/Botany", href: "/programs/zoology" },
+            { name: "Microbiology", href: "/programs/microbiology" }
+          ]
+        }
+      ],
+      image: {
+        type: "programs-grid",
+        title: "Academic Excellence",
+        features: [
+          { icon: "🎓", title: "Flexible Choice Based Credit System" },
+          { icon: "📚", title: "70+ Electives" },
+          { icon: "🔬", title: "Advanced Technologies & Integration" },
+          { icon: "📝", title: "Project based & Experiential Learning" }
+        ]
+      }
+    },
+    "Academics": {
+      sections: [
+        {
+          title: "ACADEMICS",
+          links: [
+            { name: "Academics Overview", href: "/academics/overview" },
+            { name: "Institutes", href: "/academics/institutes" },
+            { name: "Program (Courses)", href: "/academics/programs" },
+            { name: "Academic Calendar", href: "/academics/calendar" },
+            { name: "List of Holidays", href: "/academics/holidays" },
+            { name: "Teaching Practices", href: "/academics/teaching" },
+            { name: "System of Evaluation", href: "/academics/evaluation" }
+          ]
+        },
+        {
+          title: "SPECIAL FEATURES",
+          links: [
+            { name: "Flexible Choice Based Credit System", href: "/academics/credit-system" },
+            { name: "70+ Electives", href: "/academics/electives" },
+            { name: "Advanced Technologies & Integration", href: "/academics/technologies" },
+            { name: "Project based & Experiential Learning", href: "/academics/experiential" }
+          ]
+        }
+      ],
+      image: {
+        type: "academic-features",
+        title: "Academic Excellence",
+        features: [
+          { icon: "🎓", title: "Flexible Choice Based Credit System" },
+          { icon: "📚", title: "70+ Electives" },
+          { icon: "🔬", title: "Advanced Technologies & Integration" },
+          { icon: "📝", title: "Project based & Experiential Learning" }
+        ]
+      }
+    },
+    "Admissions": {
+      sections: [
+        {
+          title: "JOB ORIENTED PROGRAMS",
+          links: [
+            { name: "After 12th", href: "/admissions/after-12th" },
+            { name: "After Graduation", href: "/admissions/after-graduation" },
+            { name: "Leet Programs", href: "/admissions/leet" },
+            { name: "Specialized Programs", href: "/admissions/specialized" },
+            { name: "Integrated Programs", href: "/admissions/integrated" },
+            { name: "After Post Graduation", href: "/admissions/post-graduation" },
+            { name: "CU Advantages", href: "/admissions/advantages" },
+            { name: "ABET Engineering Accreditation", href: "/admissions/abet" }
+          ]
+        },
+        {
+          title: "ADMISSION",
+          links: [
+            { name: "Overview", href: "/admissions/overview" },
+            { name: "Course Fee", href: "/admissions/fees" },
+            { name: "How to Apply?", href: "/admissions/apply" },
+            { name: "Admission Criteria", href: "/admissions/criteria" },
+            { name: "SPEC Scholarship", href: "/admissions/scholarship" },
+            { name: "Education Loan", href: "/admissions/loan" },
+            { name: "Hostel Fee", href: "/admissions/hostel-fee" },
+            { name: "National Admissions", href: "/admissions/national" },
+            { name: "International Admissions", href: "/admissions/international" },
+            { name: "Admission Offices", href: "/admissions/offices" },
+            { name: "Visit the Campus", href: "/admissions/visit" }
+          ]
+        }
+      ],
+      image: {
+        type: "admissions-cta",
+        title: "Apply Today For",
+        subtitle: "CHANDIGARH UNIVERSITY PROGRAMS",
+        cta: "Registration Ends Date (Phase - I): 9th May 2024",
+        buttonText: "APPLY NOW"
+      }
+    },
+    "Campus Life": {
+      sections: [
+        {
+          title: "CAMPUS EVENTS & ACTIVITIES",
+          links: [
+            { name: "Overview", href: "/campus/overview" },
+            { name: "Convocations", href: "/campus/convocations" },
+            { name: "Live-in-Concerts", href: "/campus/live-concerts" },
+            { name: "Tech Invent & Events", href: "/campus/tech-events" },
+            { name: "Cultural & Cosmopolitan", href: "/campus/cultural" },
+            { name: "Evoke & Youth Summits", href: "/campus/evoke-summits" },
+            { name: "Sports & Adventure", href: "/campus/sports" }
+          ]
+        },
+        {
+          title: "HIGHLIGHTS & CONFERENCES",
+          links: [
+            { name: "Glorious Stars at CU", href: "/campus/glorious-stars" },
+            { name: "Latest News", href: "/campus/news" },
+            { name: "Bollywood Celebrities", href: "/campus/bollywood" },
+            { name: "Prominent Visitors", href: "/campus/visitors" },
+            { name: "CU-RHYTHMS International Folklore Festival", href: "/campus/rhythms-festival" },
+            { name: "National & International Conferences", href: "/campus/conferences" }
+          ]
+        }
+      ],
+      image: {
+        type: "campus-life",
+        title: "Unlock your Career Goals",
+        features: [
+          { icon: "🎓", title: "Scholarships" },
+          { icon: "💰", title: "Education Loan" },
+          { icon: "📝", title: "CUCET" }
+        ]
+      }
+    },
+    "Placements": {
+      sections: [
+        {
+          title: "PLACEMENTS",
+          links: [
+            { name: "About Placements", href: "/placements/about" },
+            { name: "Placement Tracker", href: "/placements/tracker" },
+            { name: "Department of Career Planning & Development", href: "/placements/department" },
+            { name: "Joint Placement Programme", href: "/placements/joint" },
+            { name: "Best Engineering Placement", href: "/placements/engineering" },
+            { name: "Best Management Placement", href: "/placements/management" },
+            { name: "Best Hotel Management Placement", href: "/placements/hotel" },
+            { name: "Best Pharma Sciences Placement", href: "/placements/pharma" },
+            { name: "Best Physics Placement", href: "/placements/physics" },
+            { name: "Best TCS Placement", href: "/placements/tcs" },
+            { name: "Placement Day", href: "/placements/day" },
+            { name: "Our Leading Recruiters", href: "/placements/recruiters" }
+          ]
+        },
+        {
+          title: "TOP RECRUITERS",
+          description: "Most sought after Destination of blue-chip companies",
+          companies: ["Google", "Amazon", "Microsoft", "Mahindra"]
+        }
+      ],
+      image: {
+        type: "placement-stats",
+        title: "University with",
+        subtitle: "Best Placements",
+        stats: [
+          { number: "9000+", label: "PLACEMENTS", subtext: "Offered in Batch 2024-25" },
+          { number: "1.7", unit: "CR", label: "INTERNATIONAL", subtext: "Highest Package Offered" },
+          { number: "54.75", unit: "LPA", label: "NATIONAL", subtext: "Highest Package Offered" }
+        ]
+      }
+    },
+    "Research & Innovation": {
+      sections: [
+        {
+          title: "RESEARCH & INNOVATION",
+          links: [
+            { name: "BRDC Foundation", href: "/research/brdc-foundation" },
+            { name: "SIC (SPEC Innovation Cell)", href: "/research/spec-innovation-cell" },
+            { name: "Centre of Excellence(Engineering)", href: "/research/centre-excellence-engineering" },
+            { name: "FLC - Foreign Language Cell", href: "/research/foreign-language-cell" },
+            { name: "SMADA (SPEC Music and Dance Academy)", href: "/research/spec-music-dance-academy" }
+          ]
+        },
+        {
+          title: "CENTERS & INITIATIVES",
+          links: [
+            { name: "Shikhar Club", href: "/research/shikhar-club" },
+            { name: "IRRC - International Relations and Research Cell", href: "/research/international-relations-research-cell" },
+            { name: "MOU", href: "/research/mou" },
+            { name: "R & D Center", href: "/research/rd-center" }
+          ]
+        }
+      ],
+      image: {
+        type: "research-innovation",
+        title: "Our Intellectual Pursuits",
+        stats: [
+          { number: "14700+", label: "Research Publications" },
+          { number: "4300+", label: "Patents Filed" },
+          { number: "30", label: "Industry Sponsored Advisory Labs" },
+          { number: "200", label: "Departmental Research Groups" }
+        ]
+      }
+    }
+  }
+
   return (
     <header className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-[#0b578a] py-2' : 'bg-transparent py-4'
+      scrolled ? 'bg-[#0b578a] py-1' : 'bg-transparent py-1'
     }`}>
       <div className="relative z-10">
-        {/* Top Announcement Bar */}
-        <div className={`announcement-bar overflow-hidden relative py-2 transition-all duration-300 ${
-          scrolled ? 'h-0 opacity-0' : 'h-auto opacity-100'
-        }`}>
-          <div className="announcement-content">
-            Register Now for CU Joint Campus Placement Programme <Link href="https://www.cuchd.in/placements/frmRegistration.aspx?Type=jpp2019" className="underline ml-1">Register Now</Link>
-            <span className="mx-3">|</span>
-            International Conference on Innovative Trends in Electrical, Electronics and Bio-Technology Engineering <Link href="https://www.cuchd.in/conference/iciteeb-2025/" className="underline ml-1">Register Now</Link>
-            <span className="mx-3">|</span>
-            1st International Conference on Building Urban Infrastructure with Leading Design Innovations (BUILD- 2025) <Link href="https://www.cuchd.in/conference/build-2025/" className="underline ml-1">Register Now</Link>
-          </div>
-        </div>
-
-        {/* Top Secondary Bar */}
-        <div className={`text-white py-2 px-4 bg-transparent transition-all duration-300 ${
+        {/* Top Secondary Bar with Integrated Conference Slider */}
+        <div className={`text-white py-1 px-4 bg-transparent transition-all duration-300 ${
           scrolled ? 'h-0 opacity-0 overflow-hidden' : 'h-auto opacity-100'
         }`}>
           <div className="cu-container flex justify-between items-center">
@@ -65,6 +401,74 @@ export const Header = () => {
               <Link href="/maps/" className="flex items-center">
                 <span>360°</span>
               </Link>
+            </div>
+
+            {/* Conference Announcement Slider - Center */}
+            <div className="flex-1 mx-2 md:mx-8 bg-transparent rounded-full overflow-hidden">
+              <div className="relative h-8 flex items-center">
+                <div className="w-full">
+                  <div className="flex items-center justify-center relative overflow-hidden">
+                    <div className="flex transition-transform duration-500 ease-in-out"
+                         style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                      {announcements.map((announcement, index) => (
+                        <div key={index} className="w-full flex-shrink-0 flex items-center justify-center gap-1 md:gap-3 text-center px-2 md:px-4">
+                          <div className="flex items-center gap-1 md:gap-2">
+                            <span className="text-yellow-300 text-xs md:text-sm">🎉</span>
+                            <span className="font-bold text-xs md:text-xs text-white">
+                              {/* Mobile: Show shortened title */}
+                              <span className="block md:hidden">
+                                {announcement.title.length > 40 
+                                  ? `${announcement.title.substring(0, 40)}...` 
+                                  : announcement.title}
+                              </span>
+                              {/* Desktop: Show full or longer title */}
+                              <span className="hidden md:block">
+                                {announcement.title.length > 80 
+                                  ? `${announcement.title.substring(0, 80)}...` 
+                                  : announcement.title}
+                              </span>
+                            </span>
+                          </div>
+                          {/* Hide date on mobile, show on larger screens */}
+                          <div className="hidden lg:flex items-center gap-2 text-xs">
+                            <span className="bg-white/20 px-2 py-1 rounded text-xs text-white">
+                              📅 {announcement.date}
+                            </span>
+                          </div>
+                          <Link 
+                            href={announcement.link}
+                            className="bg-yellow-400 text-black px-1.5 md:px-2 py-1 rounded-full text-xs font-bold hover:bg-yellow-300 transition-colors whitespace-nowrap"
+                          >
+                            {/* Shorter action text on mobile */}
+                            <span className="block md:hidden">
+                              {announcement.action === "Register Now" ? "Register" : 
+                               announcement.action === "Apply Today" ? "Apply" :
+                               announcement.action === "Participate" ? "Join" : announcement.action}
+                            </span>
+                            <span className="hidden md:block">
+                              {announcement.action}
+                            </span>
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Manual Navigation Dots - Responsive */}
+                <div className="absolute right-1 md:right-2 flex gap-0.5 md:gap-1">
+                  {announcements.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-1 h-1 md:w-1.5 md:h-1.5 rounded-full transition-colors ${
+                        currentSlide === index ? 'bg-yellow-400' : 'bg-white/50'
+                      }`}
+                      aria-label={`Go to announcement ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Social Links */}
@@ -93,34 +497,48 @@ export const Header = () => {
 
         {/* Main Header */}
         <div className={`relative transition-all duration-300 ${
-          scrolled ? 'py-2' : 'py-2'
+          scrolled ? 'py-1' : 'py-2 md:py-1'
         } border-b border-white/10`}>
-          <div className="cu-container flex items-center justify-between relative z-10">
-            <Link href="/" className="z-10">
+          <div className="cu-container flex items-center justify-between relative z-10 px-4 md:px-6">
+            <Link href="/" className="z-10 flex-shrink-0">
               <Image
                 src="/Logo.png"
                 alt="SPEC Institutes Logo"
                 width={400}
                 height={130}
-                className={`w-auto transition-all duration-300 ${scrolled ? 'h-[80px] md:h-[90px]' : 'h-[90px] md:h-[110px]'}`}
+                className={`w-auto transition-all duration-300 ${
+                  scrolled 
+                    ? 'h-[50px] sm:h-[60px] md:h-[70px]' 
+                    : 'h-[60px] sm:h-[70px] md:h-[80px]'
+                }`}
                 priority
               />
             </Link>
 
-            {/* Primary Navigation */}
-            <div className="hidden md:flex flex-1 justify-start ml-20">
-            <div className="hidden lg:flex gap-8 text-white">
-              <Link href="/student-services/libraries.php" className="nav-link py-2">Library</Link>
-              <Link href="/student-services/" className="nav-link py-2">Student Services</Link>
-              <Link href="/jobs/" className="nav-link py-2">Career</Link>
-              <Link href="/spec-talk/" className="nav-link py-2">SPEC Talk</Link>
-              <Link href="/contact/index.php" className="nav-link py-2">Contact Us</Link>
-            </div>
+            {/* Primary Navigation - Hidden on Mobile */}
+            <div className="hidden md:flex flex-1 justify-start ml-8 lg:ml-20">
+              <div className="hidden lg:flex gap-4 xl:gap-8 text-white">
+                <Link href="/student-services/libraries.php" className="nav-link py-1 text-sm xl:text-base hover:text-[#fbb03b] transition-colors">
+                  Library
+                </Link>
+                <Link href="/student-services/" className="nav-link py-1 text-sm xl:text-base hover:text-[#fbb03b] transition-colors">
+                  Student Services
+                </Link>
+                <Link href="/jobs/" className="nav-link py-1 text-sm xl:text-base hover:text-[#fbb03b] transition-colors">
+                  Career
+                </Link>
+                <Link href="/spec-talk/" className="nav-link py-1 text-sm xl:text-base hover:text-[#fbb03b] transition-colors">
+                  SPEC Talk
+                </Link>
+                <Link href="/contact/index.php" className="nav-link py-1 text-sm xl:text-base hover:text-[#fbb03b] transition-colors">
+                  Contact Us
+                </Link>
+              </div>
             </div>
 
             <div className="flex items-center gap-2 md:gap-4">
-              <div className="flex items-center gap-4">
-                <Link href="tel:+1800121288800" className="hidden md:flex items-center gap-2 text-white">
+              <div className="flex items-center gap-2 md:gap-4">
+                <Link href="tel:+1800121288800" className="hidden lg:flex items-center gap-2 text-white">
                   <Image
                     src="https://www.cuchd.in/includes/assets/images/header-footer/phone-icon.webp"
                     alt="Phone Icon"
@@ -133,8 +551,8 @@ export const Header = () => {
                   </div>
                 </Link>
 
-                <button aria-label="Search" className="hidden md:block text-white">
-                  <span>Search</span>
+                <button aria-label="Search" className="hidden md:block text-white hover:text-[#fbb03b] transition-colors">
+                  <span className="text-sm">Search</span>
                 </button>
               </div>
               
@@ -145,26 +563,133 @@ export const Header = () => {
                     <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white">
+                <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white overflow-y-auto">
                   <div className="flex flex-col gap-4 mt-6">
-                    <Link href="/student-services/libraries.php" className="px-4 py-2 text-lg font-semibold hover:bg-gray-100 rounded-md">
-                      Library
-                    </Link>
-                    <Link href="/student-services/" className="px-4 py-2 text-lg font-semibold hover:bg-gray-100 rounded-md">
-                      Student Services
-                    </Link>
-                    <Link href="/jobs/" className="px-4 py-2 text-lg font-semibold hover:bg-gray-100 rounded-md">
-                      Career
-                    </Link>
-                    <Link href="/spec-talk/" className="px-4 py-2 text-lg font-semibold hover:bg-gray-100 rounded-md">
-                      SPEC Talk
-                    </Link>
-                    <Link href="/contact/index.php" className="px-4 py-2 text-lg font-semibold hover:bg-gray-100 rounded-md">
-                      Contact Us
-                    </Link>
+                    {/* Primary Navigation Items */}
+                    <div className="border-b border-gray-200 pb-4">
+                      <h3 className="text-lg font-bold text-[#0b578a] mb-3">Quick Links</h3>
+                      <Link href="/student-services/libraries.php" className="flex items-center px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                        Library
+                      </Link>
+                      <Link href="/student-services/" className="flex items-center px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                        Student Services
+                      </Link>
+                      <Link href="/jobs/" className="flex items-center px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                        Career
+                      </Link>
+                      <Link href="/spec-talk/" className="flex items-center px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                        SPEC Talk
+                      </Link>
+                      <Link href="/contact/index.php" className="flex items-center px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                        Contact Us
+                      </Link>
+                    </div>
+
+                    {/* Secondary Navigation Items */}
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-bold text-[#0b578a] mb-3">Explore</h3>
+                      
+                      {/* About */}
+                      <div className="border-b border-gray-100 pb-3">
+                        <Link href="/about/overview" className="flex items-center justify-between px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                          About
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </Link>
+                        <div className="ml-4 space-y-1">
+                          <Link href="/about/overview" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Overview</Link>
+                          <Link href="/about/vision-mission" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Vision & Mission</Link>
+                          <Link href="/about/leadership" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Leadership</Link>
+                        </div>
+                      </div>
+
+                      {/* Programs */}
+                      <div className="border-b border-gray-100 pb-3">
+                        <Link href="/programs/engineering" className="flex items-center justify-between px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                          Programs
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </Link>
+                        <div className="ml-4 space-y-1">
+                          <Link href="/programs/engineering" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Engineering</Link>
+                          <Link href="/programs/management" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Management</Link>
+                          <Link href="/programs/computing" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Computing</Link>
+                          <Link href="/programs/architecture" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Architecture</Link>
+                        </div>
+                      </div>
+
+                      {/* Academics */}
+                      <div className="border-b border-gray-100 pb-3">
+                        <Link href="/academics/overview" className="flex items-center justify-between px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                          Academics
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </Link>
+                        <div className="ml-4 space-y-1">
+                          <Link href="/academics/overview" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Overview</Link>
+                          <Link href="/academics/institutes" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Institutes</Link>
+                          <Link href="/academics/programs" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Courses</Link>
+                        </div>
+                      </div>
+
+                      {/* Admissions */}
+                      <div className="border-b border-gray-100 pb-3">
+                        <Link href="/admissions/overview" className="flex items-center justify-between px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                          Admissions
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </Link>
+                        <div className="ml-4 space-y-1">
+                          <Link href="/admissions/apply" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">How to Apply</Link>
+                          <Link href="/admissions/fees" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Course Fees</Link>
+                          <Link href="/admissions/scholarship" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Scholarships</Link>
+                        </div>
+                      </div>
+
+                      {/* Campus Life */}
+                      <div className="border-b border-gray-100 pb-3">
+                        <Link href="/campus/overview" className="flex items-center justify-between px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                          Campus Life
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </Link>
+                        <div className="ml-4 space-y-1">
+                          <Link href="/campus/cultural" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Cultural Events</Link>
+                          <Link href="/campus/sports" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Sports</Link>
+                          <Link href="/campus/tech-events" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Tech Events</Link>
+                        </div>
+                      </div>
+
+                      {/* Placements */}
+                      <div className="border-b border-gray-100 pb-3">
+                        <Link href="/placements/about" className="flex items-center justify-between px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                          Placements
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </Link>
+                        <div className="ml-4 space-y-1">
+                          <Link href="/placements/tracker" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Placement Tracker</Link>
+                          <Link href="/placements/recruiters" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Top Recruiters</Link>
+                          <Link href="/placements/engineering" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Engineering Placements</Link>
+                        </div>
+                      </div>
+
+                      {/* Research & Innovation */}
+                      <div className="border-b border-gray-100 pb-3">
+                        <Link href="/research/brdc-foundation" className="flex items-center justify-between px-4 py-2 text-base font-semibold hover:bg-gray-100 rounded-md">
+                          Research & Innovation
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </Link>
+                        <div className="ml-4 space-y-1">
+                          <Link href="/research/spec-innovation-cell" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">Innovation Cell</Link>
+                          <Link href="/research/rd-center" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">R&D Center</Link>
+                          <Link href="/research/mou" className="block px-4 py-1 text-sm text-gray-600 hover:text-[#0b578a]">MOU</Link>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Contact Information */}
                     <div className="border-t border-gray-200 mt-4 pt-4">
-                      <Link href="tel:+1800121288800" className="flex items-center gap-2 px-4 py-2 text-lg font-semibold">
-                        <span>Call: 1800121288800</span>
+                      <Link href="tel:+1800121288800" className="flex items-center gap-3 px-4 py-3 text-lg font-semibold bg-[#0b578a] text-white rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <div>
+                          <div className="text-xs">Admission Helpline</div>
+                          <div className="text-sm">1800121288800</div>
+                        </div>
                       </Link>
                     </div>
                   </div>
@@ -173,10 +698,10 @@ export const Header = () => {
             </div>
           </div>
           
-          {/* Secondary Navigation */}
-          <div className="hidden md:flex mt-2 justify-center">
-            <div className="max-w-[1800px] w-full">
-              <div className={`hidden lg:flex justify-center items-center py-2 px-12 rounded-lg ${
+          {/* Secondary Navigation with Mega Menu */}
+          <div className="hidden md:flex mt-1 justify-center">
+            <div className="max-w-[1500px] w-full px-4 md:px-6">
+              <div className={`hidden lg:flex justify-center items-center py-1 px-6 xl:px-12 rounded-lg ${
                 scrolled ? 'bg-white/20 backdrop-blur-lg' : 'bg-black/20 backdrop-blur-sm'
               }`}>
                 {[
@@ -186,14 +711,168 @@ export const Header = () => {
                   "Admissions",
                   "Campus Life",
                   "Placements",
-                  "Research & Innovation",
-                  "International"
+                  "Research & Innovation"
                 ].map((item) => (
-                  <div className="relative group\" key={item}>
-                    <button className="px-8 py-2 flex items-center gap-1 text-white uppercase font-bold text-sm tracking-wide hover:text-[#fbb03b] transition-colors whitespace-nowrap">
+                  <div 
+                    className="relative group" 
+                    key={item}
+                    onMouseEnter={() => handleMenuEnter(item)}
+                    onMouseLeave={handleMenuLeave}
+                  >
+                    <button className="px-4 xl:px-8 py-1 flex items-center gap-1 text-white uppercase font-bold text-xs xl:text-sm tracking-wide hover:text-[#fbb03b] transition-colors whitespace-nowrap">
                       {item}
                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
+
+                    {/* Individual Mega Menu Dropdown */}
+                    {activeMenu === item && megaMenus[item] && (
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 bg-white shadow-2xl border-t-4 border-[#0b578a] z-50 mt-2 w-[600px] xl:w-[700px] rounded-lg overflow-hidden">
+                        <div className="p-4 xl:p-6">
+                          <div className="grid grid-cols-3 gap-8">
+                            {/* Menu Sections - Left 2 columns */}
+                            <div className="col-span-2 grid grid-cols-2 gap-6">
+                              {megaMenus[item].sections.map((section, index) => (
+                                <div key={index} className="space-y-4">
+                                  <h3 className="text-sm font-bold text-[#0b578a] uppercase border-b border-gray-200 pb-2">
+                                    {section.title}
+                                  </h3>
+                                  
+                                  {section.links && (
+                                    <ul className="space-y-1">
+                                      {section.links.map((link, linkIndex) => (
+                                        <li key={linkIndex}>
+                                          <Link 
+                                            href={link.href} 
+                                            className="text-gray-700 hover:text-[#0b578a] hover:underline transition-colors duration-200 text-sm block py-1"
+                                          >
+                                            {link.name}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+
+                                  {section.companies && (
+                                    <div className="space-y-3">
+                                      <p className="text-sm text-gray-600">{section.description}</p>
+                                      <div className="grid grid-cols-2 gap-3">
+                                        {section.companies.map((company, compIndex) => (
+                                          <div key={compIndex} className="bg-[#0b578a] text-white p-2 rounded text-center text-xs font-semibold">
+                                            {company}
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  )}
+
+                                  {section.stats && (
+                                    <div className="grid grid-cols-2 gap-3">
+                                      {section.stats.map((stat, statIndex) => (
+                                        <div key={statIndex} className="bg-red-600 text-white p-3 rounded text-center">
+                                          <div className="text-lg font-bold">{stat.number}</div>
+                                          <div className="text-xs">{stat.label}</div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Promotional Image Section - Right column */}
+                            {megaMenus[item].image && (
+                              <div className="col-span-1">
+                                {megaMenus[item].image?.type === "university-promotion" && (
+                                  <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white p-6 rounded-lg">
+                                    <h3 className="text-lg font-bold mb-2">{megaMenus[item].image?.title}</h3>
+                                    <p className="text-sm mb-4">{megaMenus[item].image?.subtitle}</p>
+                                    <div className="grid grid-cols-2 gap-3">
+                                      {megaMenus[item].image?.features?.map((feature, idx) => (
+                                        <div key={idx} className="text-center p-2 bg-white/20 rounded">
+                                          <div className="text-2xl mb-1">{feature.icon}</div>
+                                          <div className="text-xs font-semibold">{feature.title}</div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+
+                                {megaMenus[item].image?.type === "placement-stats" && (
+                                  <div className="bg-gradient-to-br from-gray-800 to-gray-900 text-white p-6 rounded-lg">
+                                    <h3 className="text-lg font-bold mb-1">{megaMenus[item].image?.title}</h3>
+                                    <p className="text-cyan-300 text-lg font-bold mb-4">{megaMenus[item].image?.subtitle}</p>
+                                    <div className="space-y-3">
+                                      {megaMenus[item].image?.stats?.map((stat, idx) => (
+                                        <div key={idx} className="bg-red-600 text-white p-4 rounded text-center">
+                                          <div className="text-2xl font-bold">
+                                            {stat.number}{stat.unit && <span className="text-lg"> {stat.unit}</span>}
+                                          </div>
+                                          <div className="text-xs font-bold">{stat.label}</div>
+                                          <div className="text-xs">{stat.subtext}</div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+
+                                {megaMenus[item].image?.type === "admissions-cta" && (
+                                  <div className="bg-gradient-to-br from-red-600 to-red-800 text-white p-6 rounded-lg">
+                                    <h3 className="text-lg font-bold mb-2">{megaMenus[item].image?.title}</h3>
+                                    <p className="text-yellow-300 text-sm font-bold mb-4">{megaMenus[item].image?.subtitle}</p>
+                                    <p className="text-xs mb-4">{megaMenus[item].image?.cta}</p>
+                                    <button className="bg-yellow-400 text-red-800 px-4 py-2 rounded font-bold text-sm w-full">
+                                      {megaMenus[item].image?.buttonText}
+                                    </button>
+                                  </div>
+                                )}
+
+                                {megaMenus[item].image?.type === "research-innovation" && (
+                                  <div className="bg-gradient-to-br from-purple-600 to-purple-800 text-white p-6 rounded-lg">
+                                    <h3 className="text-lg font-bold mb-4">{megaMenus[item].image?.title}</h3>
+                                    <div className="grid grid-cols-2 gap-2">
+                                      {megaMenus[item].image?.stats?.map((stat, idx) => (
+                                        <div key={idx} className="bg-red-600 text-white p-3 rounded text-center">
+                                          <div className="text-lg font-bold">{stat.number}</div>
+                                          <div className="text-xs">{stat.label}</div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+
+                                {(megaMenus[item].image?.type === "programs-grid" || megaMenus[item].image?.type === "academic-features") && (
+                                  <div className="bg-gradient-to-br from-green-600 to-green-800 text-white p-6 rounded-lg">
+                                    <h3 className="text-lg font-bold mb-4">{megaMenus[item].image?.title}</h3>
+                                    <div className="grid grid-cols-2 gap-3">
+                                      {megaMenus[item].image?.features?.map((feature, idx) => (
+                                        <div key={idx} className="bg-white/20 p-3 rounded text-center">
+                                          <div className="text-2xl mb-2">{feature.icon}</div>
+                                          <div className="text-xs font-semibold">{feature.title}</div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+
+                                {megaMenus[item].image?.type === "campus-life" && (
+                                  <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 text-white p-6 rounded-lg">
+                                    <h3 className="text-lg font-bold mb-4">{megaMenus[item].image?.title}</h3>
+                                    <div className="space-y-3">
+                                      {megaMenus[item].image?.features?.map((feature, idx) => (
+                                        <div key={idx} className="flex items-center space-x-3 bg-white/20 p-3 rounded">
+                                          <div className="text-2xl">{feature.icon}</div>
+                                          <div className="text-sm font-semibold">{feature.title}</div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

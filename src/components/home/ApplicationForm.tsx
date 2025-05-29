@@ -31,7 +31,7 @@ export const ApplicationForm = () => {
   }
 
   return (
-    <Card className="w-full max-w-sm lg:max-w-md bg-white shadow-2xl mx-auto lg:mx-0 overflow-hidden flex-shrink-0 lg:self-start lg:mt-8">
+    <Card className="w-full max-w-sm lg:max-w-md bg-white shadow-2xl mx-auto lg:mx-0 overflow-hidden flex-shrink-0 lg:self-start">
       {/* Header */}
       <CardHeader className="text-center py-4 lg:py-6 px-4 lg:px-6 bg-white">
         <div className="space-y-1 lg:space-y-2">

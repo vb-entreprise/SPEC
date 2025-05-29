@@ -8,7 +8,7 @@ import { ApplicationForm } from "./ApplicationForm"
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden pt-[200px] lg:pt-[240px] pb-8 lg:pb-16">
+    <section className="relative min-h-screen overflow-hidden pt-[160px] lg:pt-[180px] pb-8 lg:pb-16">
       {/* Background Image */}
       <Image
         src="/Background.jpg"
@@ -21,9 +21,9 @@ export const HeroSection = () => {
       {/* Overlay */}
       <div className="fixed inset-0 bg-black/60 -z-10"></div>
 
-      <div className="container mx-auto relative h-full flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between gap-8 lg:gap-16 z-10 px-4 lg:px-8 py-8 lg:py-16">
+      <div className="container mx-auto relative h-full flex flex-col lg:flex-row items-center lg:items-center justify-center lg:justify-between gap-8 lg:gap-16 z-10 px-4 lg:px-8 py-4 lg:py-8">
         {/* Left Content - Visible on larger screens */}
-        <div className="text-white max-w-2xl text-center lg:text-left flex-1 lg:pr-8">
+        <div className="text-white max-w-2xl text-center lg:text-left flex-1 lg:pr-8 lg:self-center">
           <h1 className="text-3xl lg:text-5xl font-bold mb-6 leading-tight">
             Best Private University<br />
             in Punjab (India)
@@ -37,8 +37,6 @@ export const HeroSection = () => {
               APPLY TODAY
             </Button>
           </Link>
-
-
         </div>
 
         {/* Application Form */}

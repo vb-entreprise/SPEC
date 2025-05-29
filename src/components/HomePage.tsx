@@ -5,11 +5,11 @@ import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { HeroSection } from "@/components/home/HeroSection"
 import { RankingBanner } from "@/components/home/RankingBanner"
-import { StatsSection } from "@/components/home/StatsSection"
-import { RankingsSection } from "@/components/home/RankingsSection"
-import { ProgramsSection } from "@/components/home/ProgramsSection"
-import { NewsSection } from "@/components/home/NewsSection"
-import { SecondaryMenu } from "@/components/layout/SecondaryMenu"
+import { NotificationBell } from "@/components/home/NotificationBell"
+import { ScrollToTop } from "@/components/home/ScrollToTop"
+import { Chatbot } from "@/components/home/Chatbot"
+import { StatsSection, SpecScalarSection } from "@/components/home/StatsSection"
+import { PlacementsOverview, PlacementStats, WhyChooseSection, StudentsSpeak, PioneeringResearch, NewsEvents } from "@/components/home/AdditionalSections"
 
 export default function HomePage() {
   return (
@@ -19,12 +19,19 @@ export default function HomePage() {
         <HeroSection />
         <RankingBanner />
         <StatsSection />
-        <RankingsSection />
-        <ProgramsSection />
-        <NewsSection />
+        <SpecScalarSection />
+        <PlacementsOverview />
+        <PlacementStats />
+        <WhyChooseSection />
+        <StudentsSpeak />
+        <PioneeringResearch />
+        <NewsEvents />
       </main>
 
       <Footer />
+      <NotificationBell />
+      <ScrollToTop />
+      <Chatbot />
     </div>
   )
 }
