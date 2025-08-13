@@ -1,0 +1,11 @@
+nohup: ignoring input
+
+> nextjs-shadcn@0.1.0 start
+> next start -p 3003
+
+   ▲ Next.js 15.3.2
+   - Local:        http://localhost:3003
+   - Network:      http://144.91.108.248:3003
+
+ ✓ Starting...
+[Error: Could not find a production build in the 'dist' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id]

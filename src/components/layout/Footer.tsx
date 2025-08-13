@@ -13,15 +13,15 @@ export const Footer = () => {
           <div>
             <h4 className="text-cyan-400 font-semibold text-lg mb-4">Apply Here</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Admissions</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Education Loan</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Admissions</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Education Loan</Link></li>
               <li><Link href="#" className="hover:text-cyan-400 transition-colors">How to Apply?</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Scholarship</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Admission Office</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Student Feedback</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Student Facilitation</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU International Student Facilitation</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Alumni Membership</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Scholarship</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Admission Office</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Student Feedback</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Student Facilitation</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC International Student Facilitation</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Alumni Membership</Link></li>
               <li><Link href="#" className="hover:text-cyan-400 transition-colors">eSanad</Link></li>
               <li><Link href="#" className="hover:text-cyan-400 transition-colors">Guinness World Records</Link></li>
             </ul>
@@ -35,14 +35,14 @@ export const Footer = () => {
               <li><Link href="#" className="hover:text-cyan-400 transition-colors">Organogram</Link></li>
               <li><Link href="#" className="hover:text-cyan-400 transition-colors">Other Committees</Link></li>
               <li><Link href="#" className="hover:text-cyan-400 transition-colors">Pay Fee Online</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Institutes</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Institutes</Link></li>
               <li><Link href="#" className="hover:text-cyan-400 transition-colors">Teaching Practices</Link></li>
               <li><Link href="#" className="hover:text-cyan-400 transition-colors">System of Evaluation</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Placements</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Edge</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Placements</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Edge</Link></li>
               <li><Link href="#" className="hover:text-cyan-400 transition-colors">QS Asia Rankings 2024</Link></li>
               <li><Link href="#" className="hover:text-cyan-400 transition-colors">NIRF Rankings 2024</Link></li>
-              <li><Link href="#" className="hover:text-cyan-400 transition-colors">CU Unnao Campus</Link></li>
+              <li><Link href="#" className="hover:text-cyan-400 transition-colors">SPEC Main Campus</Link></li>
             </ul>
           </div>
 

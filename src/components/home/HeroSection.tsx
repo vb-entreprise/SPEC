@@ -19,20 +19,20 @@ export const HeroSection = () => {
       />
 
       {/* Overlay */}
-      <div className="fixed inset-0 bg-black/60 -z-10"></div>
+     /* <div className="fixed inset-0 bg-black/60 -z-10"></div>
 
       <div className="container mx-auto relative h-full flex flex-col lg:flex-row items-center lg:items-center justify-center lg:justify-between gap-8 lg:gap-16 z-10 px-4 lg:px-8 py-4 lg:py-8">
         {/* Left Content - Visible on larger screens */}
         <div className="text-white max-w-2xl text-center lg:text-left flex-1 lg:pr-8 lg:self-center">
           <h1 className="text-3xl lg:text-5xl font-bold mb-6 leading-tight">
-            Best Private University<br />
-            in Punjab (India)
+            Best Private Campus<br />
+            in Gujarat (India)
           </h1>
           <p className="text-lg lg:text-xl mb-8 leading-relaxed">
-            Chandigarh University offers various Undergraduate and Postgraduate Courses like Engineering, B.tech, BCA, BBA, HMCT, B.Com, LLB, B.Arch, MBA, M.Tech and MCA.
+          SPEC  Groups  in Gujarat offers B.Tech, BCA, BBA, B.Com, MBA, MCA, M.E. (Structural Engineering), and Pharmacy programs.
           </p>
           
-          <Link href="https://cucet.cuchd.in/index.aspx?utm_source=Website&utm_medium=cuchd">
+          <Link href="https://spec.edu.in/">
             <Button className="bg-[#c40c12] hover:bg-[#a30a0f] text-white px-8 py-3 text-lg font-semibold mb-8">
               APPLY TODAY
             </Button>

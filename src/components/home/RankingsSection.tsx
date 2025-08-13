@@ -92,7 +92,7 @@ export const RankingsSection = () => {
         </div>
 
         <div className="flex justify-center">
-          <Link href="/about/Awards-and-Rankings.php">
+          <Link href="/about/recognition">
             <button className="px-5 py-2 bg-[#a9473b] text-white rounded-md hover:bg-[#863a31] transition-colors">
               View All
             </button>

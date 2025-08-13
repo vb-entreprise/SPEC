@@ -37,7 +37,7 @@ export const ApplicationForm = () => {
         <div className="space-y-1 lg:space-y-2">
           <p className="text-gray-600 text-sm uppercase tracking-wide">APPLY TODAY FOR</p>
           <h2 className="text-xl font-bold text-gray-800 leading-tight">
-            CHANDIGARH UNIVERSITY<br />
+            SPEC CAMPUS<br />
             PROGRAMS
           </h2>
           <div className="bg-[#c40c12] text-white text-xs px-4 py-2 rounded-full inline-block">
@@ -123,13 +123,12 @@ export const ApplicationForm = () => {
             >
               <option value="">SELECT DISCIPLINE</option>
               <option value="engineering">Engineering</option>
-              <option value="management">Management</option>
-              <option value="computer-science">Computer Science</option>
-              <option value="design">Design</option>
-              <option value="law">Law</option>
-              <option value="architecture">Architecture</option>
               <option value="pharmacy">Pharmacy</option>
-              <option value="agriculture">Agriculture</option>
+              <option value="management">Management (MBA)</option>
+              <option value="education">Education (B.Ed)</option>
+              <option value="commerce">Commerce</option>
+              <option value="applied-sciences">Applied Sciences</option>
+              <option value="computer-applications">Computer Applications</option>
             </select>
             <select
               name="program"

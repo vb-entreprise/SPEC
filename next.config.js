@@ -6,7 +6,17 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
+  skipTrailingSlashRedirect: true,
+  distDir: 'dist',
+  assetPrefix: '',
+  basePath: '',
+  poweredByHeader: false,
+  generateEtags: false,
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -40,7 +50,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "www.cuchd.in",
+        hostname: "spec.edu.in",
         pathname: "/**",
       },
       {

@@ -86,7 +86,7 @@ export const NewsSection = () => {
         </div>
 
         <h2 className="text-2xl font-semibold text-center mb-6">
-          Pioneering Research
+          Pioneering SPEC Campus
         </h2>
         <p className="text-center mb-8 max-w-2xl mx-auto">
           Innovation and discovery are at the heart of our approach to education and development.
@@ -132,7 +132,7 @@ export const NewsSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <NewsCard
               image="https://ext.same-assets.com/2241434697/1342323975.webp"
-              title="CU hosts International Conference on Emerging Technologies"
+              title="SPEC Campus hosts International Conference on Emerging Technologies"
               date="May 10, 2025"
               category="Events"
               link="/news/1"
@@ -146,7 +146,7 @@ export const NewsSection = () => {
             />
             <NewsCard
               image="https://ext.same-assets.com/2241434697/3214124125.webp"
-              title="CU Signs MoU with Leading Global Universities for Student Exchange"
+              title="SPEC Campus Signs MoU with Leading Global Universities for Student Exchange"
               date="April 28, 2025"
               category="Partnerships"
               link="/news/3"

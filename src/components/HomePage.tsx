@@ -8,7 +8,8 @@ import { RankingBanner } from "@/components/home/RankingBanner"
 import { NotificationBell } from "@/components/home/NotificationBell"
 import { ScrollToTop } from "@/components/home/ScrollToTop"
 import { Chatbot } from "@/components/home/Chatbot"
-import { StatsSection, SpecScalarSection } from "@/components/home/StatsSection"
+import { StatsSection } from "@/components/home/StatsSection"
+import { SpecScalarSection } from "@/components/home/SpecScalarSection"
 import { PlacementsOverview, PlacementStats, WhyChooseSection, StudentsSpeak, PioneeringResearch, NewsEvents } from "@/components/home/AdditionalSections"
 
 export default function HomePage() {

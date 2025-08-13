@@ -30,7 +30,7 @@ export const StatsSection = () => {
     {
       type: 'video' as const,
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
-      title: 'भारत से जुडिये हे CHANDIGARH UNIVERSITY',
+              title: 'भारत से जुडिये हे SPEC CAMPUS',
       hasPlayButton: true
     },
     {
@@ -41,12 +41,12 @@ export const StatsSection = () => {
     {
       type: 'achievement' as const,
       image: 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&h=300&fit=crop',
-      title: 'CU Achieves Top Rank & Overall Championship at 38th All India Inter University National Youth Festival'
+              title: 'SPEC Campus Achieves Top Rank & Overall Championship at Gujarat State University Festival'
     },
     {
       type: 'achievement' as const,
       image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop',
-      title: 'CU Becomes the First Ever University to Win the Most Prestigious Bharat Ratna Dr. APJ Abdul Kalam Award'
+              title: 'SPEC Campus Receives Prestigious Educational Excellence Award for Innovation in Engineering Education'
     }
   ]
 

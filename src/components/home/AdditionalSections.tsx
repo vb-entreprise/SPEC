@@ -342,7 +342,7 @@ export const WhyChooseSection = () => {
     <section className="py-20 bg-white">
       <div className="cu-container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Why Should You Choose Chandigarh University?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Why Should You Choose SPEC Campus?</h2>
           <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Our academic approach combines industry mentorship, global exposure, certifications, research opportunities, and capstone projects to provide experiential learning and a well-rounded education.
           </p>
@@ -352,7 +352,7 @@ export const WhyChooseSection = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative bg-white border border-gray-100 p-8 rounded-xl transition-all duration-500 hover:shadow-xl cursor-pointer overflow-hidden"
+              className="group relative bg-white border border-gray-100 p-8 rounded-xl transition-all duration-500 hover:shadow-xl hover:bg-blue-600 cursor-pointer overflow-hidden"
             >
               <div className="relative z-10">
                 <div className="mb-6 text-gray-700 group-hover:text-white transition-colors duration-500">
@@ -410,7 +410,7 @@ export const StudentsSpeak = () => {
                   FROM AN ENGINEERING ENTHUSIAST TO A PROUD NAVAL OFFICER!
                 </h3>
                 <p className="text-sm leading-relaxed">
-                  Chandigarh University has prepared me for a successful professional journey.
+                  SPEC Campus has prepared me for a successful professional journey.
                 </p>
               </div>
             </div>
@@ -438,7 +438,7 @@ export const StudentsSpeak = () => {
                   FROM AN ASPIRING ATHLETE TO AN INTERNATIONAL CRICKETER
                 </h3>
                 <p className="text-sm leading-relaxed">
-                  Lots of credit for my success in cricket goes to Chandigarh University.
+                  Lots of credit for my success in cricket goes to SPEC Campus.
                 </p>
               </div>
             </div>
@@ -479,7 +479,7 @@ export const PioneeringResearch = () => {
     },
     {
       number: "4300+", 
-      description: "Patents filed by Chandigarh\nUniversity Successfully"
+      description: "Patents filed by SPEC\nCampus Successfully"
     },
     {
       number: "200+",
@@ -578,20 +578,20 @@ export const PioneeringResearch = () => {
 export const NewsEvents = () => {
   const newsItems = [
     {
-      title: "Arjuna Award for CU's Kabaddi Star Pawan Kumar Sehrawat",
-      description: "Chandigarh University student and India Men's Kabaddi Team Captain Pawan Kumar Sehrawat is among 26 Indian athletes to get the Arjuna...",
+              title: "SPEC Campus Student Achieves National Recognition in Sports",
+      description: "SPEC Campus alumnus achieves excellence in sports representing India at national and international levels...",
       image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=400&fit=crop",
       category: "ACHIEVEMENT"
     },
     {
-      title: "Chandigarh University becomes India's First ABET Accredited Private University",
-      description: "CU has earned the Accreditation Board for Engineering and Technology (ABET)...",
+              title: "SPEC Campus Achieves 5th Rank in GTU Engineering Category",
+              description: "SPEC Engineering College secures 5th position among Gujarat's top engineering institutions...",
       image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop",
       category: "ACCREDITATION"
     },
     {
-      title: "CU Alumnus Develops India's First LLM-based Chatbot for Cybercrime Prevention",
-      description: "Another Chandigarh University alumnus is in the limelight for innovation and public service...",
+              title: "SPEC Alumni Develops Innovative Solutions for Social Impact",
+              description: "SPEC Campus alumni excel in innovation and contribute to public service across various sectors...",
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop",
       category: "INNOVATION"
     }

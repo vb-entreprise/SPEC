@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 
 export const SecondaryMenu = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -39,11 +40,11 @@ export const SecondaryMenu = () => {
   ]
 
   const extraLinks = [
-    "Library",
-    "Student Services",
-    "Career",
-    "Blogs",
-    "Contact Us"
+    { name: "Library", href: "/student-services/libraries.php" },
+    { name: "Student Services", href: "/student-services/" },
+    { name: "Career", href: "/jobs/" },
+    { name: "Blogs", href: "/spec-talk/" },
+    { name: "Contact Us", href: "/contact" }
   ]
 
   return (
@@ -86,7 +87,7 @@ export const SecondaryMenu = () => {
             {/* White Drawer */}
             <div className="fixed top-0 right-0 h-full w-[90vw] max-w-xs bg-white z-50 flex flex-col shadow-2xl animate-slide-in overflow-y-auto">
               <div className="flex items-center justify-between p-4 border-b border-gray-200">
-                <Image src="https://ext.same-assets.com/2241434697/282655042.webp" alt="Chandigarh University" width={120} height={40} />
+                <Image src="/Logo.png" alt="SPEC Campus" width={120} height={40} />
                 <button
                   className="text-gray-500 text-3xl p-1 rounded hover:bg-gray-100"
                   aria-label="Close menu"
@@ -110,7 +111,7 @@ export const SecondaryMenu = () => {
               <div className="px-6 py-4 border-b border-gray-200">
                 <div className="text-xs font-bold text-gray-700 mb-2 tracking-widest">CAMPUSES</div>
                 <div className="flex gap-6 items-center">
-                  <a href="https://www.cuchd.in/" className="flex flex-col items-center text-xs font-semibold text-gray-700 hover:text-[#c40c12]">
+                  <a href="https://spec.edu.in/" className="flex flex-col items-center text-xs font-semibold text-gray-700 hover:text-[#c40c12]">
                     <Image src="https://ext.same-assets.com/1087074623/507068166.webp" alt="Punjab Campus" width={40} height={40} />
                     <span className="mt-1">PUNJAB CAMPUS</span>
                   </a>
@@ -122,13 +123,14 @@ export const SecondaryMenu = () => {
               </div>
               <div className="flex flex-col divide-y divide-gray-200">
                 {extraLinks.map((item) => (
-                  <button
-                    key={item}
+                  <Link
+                    key={item.name}
+                    href={item.href}
                     className="w-full text-left px-6 py-4 text-black uppercase font-bold text-base tracking-wide bg-transparent hover:bg-gray-100 transition-all"
                     onClick={() => setMobileOpen(false)}
                   >
-                    {item}
-                  </button>
+                    {item.name}
+                  </Link>
                 ))}
               </div>
             </div>

@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from "next"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import { ClientBody } from "./ClientBody"
 
+const inter = Inter({ subsets: ["latin"] })
+
 export const metadata: Metadata = {
-  title: "Best Private University in Punjab, North India (India) - SPEC Institutes",
-  description: "SPEC Institutes, Punjab offers various Undergraduate and Postgraduate Courses like Engineering, B.tech, BCA, BBA, HMCT, B.Com, LLB, B.Arch, MBA, M.Tech and MCA.",
-  metadataBase: new URL('https://spec.edu'),
+  title: "SPEC Campus - Leading Educational Institution in Gujarat | Engineering, Pharmacy & More",
+  description: "SPEC Campus, Gujarat offers various Undergraduate and Postgraduate Courses in Engineering, Pharmacy, Management, Commerce, Applied Sciences, and Computer Applications with excellent placement opportunities.",
+  metadataBase: new URL('https://spec.edu.in'),
 }
 
 export const viewport: Viewport = {
@@ -17,12 +20,18 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col bg-gray-50" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+      </head>
+      <body className={`${inter.className} min-h-screen flex flex-col bg-gray-50`} suppressHydrationWarning>
         <ClientBody>
           {children}
         </ClientBody>

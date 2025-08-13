@@ -89,46 +89,51 @@ export const ProgramsSection = () => {
         {/* Programs Grid */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-[#0b578a] text-center mb-8">Our Programs</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <ProgramCard
-              title="Engineering (B.Tech/M.Tech)"
+              title="Engineering (B.E./M.E.)"
               icon="/images/icons/engineering.svg"
-              link="/engineering/"
+              link="/institutes/specengineering/"
             />
             <ProgramCard
-              title="Management (BBA/MBA)"
+              title="MBA Programs"
               icon="/images/icons/management.svg"
-              link="/management/"
+              link="/institutes/management/programs/mba"
             />
             <ProgramCard
-              title="Computing (BCA/MCA)"
-              icon="/images/icons/computing.svg"
-              link="/computing/"
-            />
-            <ProgramCard
-              title="Architecture"
-              icon="/images/icons/architecture.svg"
-              link="/architecture-and-design/"
-            />
-            <ProgramCard
-              title="Law"
-              icon="/images/icons/law.svg"
-              link="/legal-studies/"
-            />
-            <ProgramCard
-              title="Media Studies"
-              icon="/images/icons/media.svg"
-              link="/journalism-and-mass-communication/"
-            />
-            <ProgramCard
-              title="Hospitality"
-              icon="/images/icons/hotel.svg"
-              link="/hotel-management-and-tourism/"
-            />
-            <ProgramCard
-              title="Pharma Sciences"
+              title="Pharmacy (B.Pharm/M.Pharm/Pharm.D)"
               icon="/images/icons/pharma.svg"
-              link="/pharma-sciences/"
+              link="/institutes/specpharmacy/"
+            />
+            <ProgramCard
+              title="BBA Programs"
+              icon="/images/icons/business.svg"
+              link="/institutes/management/programs/bba-general"
+            />
+            <ProgramCard
+              title="Computer Application (BCA)"
+              icon="/images/icons/computing.svg"
+              link="/institutes/management/programs/bca"
+            />
+            <ProgramCard
+              title="Commerce (B.Com/M.Com)"
+              icon="/images/icons/commerce.svg"
+              link="/institutes/commerce/"
+            />
+            <ProgramCard
+              title="Applied Sciences (B.Sc/M.Sc)"
+              icon="/images/icons/science.svg"
+              link="/institutes/applied-sciences/"
+            />
+            <ProgramCard
+              title="Education (B.ED)"
+              icon="/images/icons/education.svg"
+              link="/institutes/education/"
+            />
+            <ProgramCard
+              title="Working Professional Programs"
+              icon="/images/icons/professional.svg"
+              link="/institutes/management/programs/working-mba"
             />
           </div>
         </div>
@@ -139,7 +144,7 @@ export const ProgramsSection = () => {
           </Link>
         </div>
 
-        {/* Why Choose CU Section */}
+        {/* Why Choose SPEC Section */}
         <div className="mb-8">
           <h2 className="text-[#1f425c] text-2xl font-semibold text-center mb-10">
             Why Should You Choose Chandigarh University?
