@@ -1,4 +1,4 @@
-# Git ignore file for ignoring files and directories.
+﻿# Git ignore file for ignoring files and directories.
 
 # dependencies
 /node_modules
@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# large archives
+SPEC.zip
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
